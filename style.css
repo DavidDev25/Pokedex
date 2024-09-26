@@ -1,0 +1,52 @@
+body{
+    margin: 0;
+}
+body { 
+    background-image: url(/assets/Background.png);
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+header {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    float: left;
+}
+
+.luxusball {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.PokedexHouse{
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+header input[type=search] {
+    margin-right: 20px;
+    border-radius: 100vw;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+header input[type=search]::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+    padding-left: 10px;
+}
