@@ -4,22 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
     <script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="/assets/favicon.png">
     <title>Pokedex Projekt</title>
 </head>
 
-<body>
+<body onload="init()">
     <header>
-        <div class=" luxusball">
-            <img src="assets/luxus-ball.svg" alt="Placeholder">
+        <img class="luxusball" src="assets/luxus-ball.svg" alt="Placeholder">
+        <div>
+            <img class="PokedexHouse" src="assets/Pokedex Icon.png ">
         </div>
-        <img class="PokedexHouse" src="assets/Pokedex Icon.png ">
-        <input type="search" placeholder="Search Pokemon">
+        <input type="search" placeholder="Search Pokemon" oninput="searchPokemon(this.value)">
     </header>
-
+    <div id="pokemon-list"></div>
+    <button onclick="loadMorePokemon()">next Pokemon</button>
 </body>
 
 </html>
