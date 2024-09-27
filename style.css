@@ -84,6 +84,7 @@ header input[type=search]::placeholder {
 .smallPokemonCard {
     width: 300px;
     padding: 20px;
+
     border-radius: 10px;
     position: relative;
     display: flex;

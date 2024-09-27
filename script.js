@@ -93,7 +93,7 @@ function renderPokemon(pokemonObject) {
         </div> 
         <div class="displayNameCard"> 
            <span class="name">${pokemonObject.name.toUpperCase()}</span> 
-            <img src="${pokemonObject.sprites.other.showdown.front_default}" />
+            <img src="${pokemonObject.sprites.front_default}" />
         </div>
         <div class="showTypes">
             ${secondtype} 
