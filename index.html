@@ -12,15 +12,17 @@
 </head>
 
 <body onload="init()">
-    <header>
-        <img class="luxusball" src="assets/luxus-ball.svg" alt="Placeholder">
-        <div>
-            <img class="PokedexHouse" src="assets/Pokedex Icon.png ">
-        </div>
-        <input type="search" placeholder="Search Pokemon" oninput="searchPokemon(this.value)">
-    </header>
-    <div id="pokemon-list"></div>
-    <button onclick="loadMorePokemon()">next Pokemon</button>
+    <div id="content">
+        <header>
+            <img class="luxusball" src="assets/luxus-ball.svg" alt="Placeholder">
+            <div>
+                <img class="PokedexHouse" src="assets/Pokedex Icon.png ">
+            </div>
+            <input type="search" placeholder="Search Pokemon" oninput="searchPokemon(this.value)">
+        </header>
+        <div id="pokemon-list"></div>
+        <button onclick="loadMorePokemon()">next Pokemon</button>
+    </div>
 </body>
 
 </html>

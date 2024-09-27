@@ -88,13 +88,12 @@ function renderPokemon(pokemonObject) {
     }
 
     pokemonContainer.innerHTML = `
-     <p>HP: ${pokemonObject.stats[0].base_stat}</p> 
-      <br>  <p>${pokemonObject.name.toUpperCase()}</p> <br>
+     <span>HP: ${pokemonObject.stats[0].base_stat}</span> 
+       <span>${pokemonObject.name.toUpperCase()}</span> 
         <img src="${pokemonObject.sprites.other.showdown.front_default}" />
-       
-        <p>ID NR: ${pokemonObject.id}</p>
+        <span>ID NR: ${pokemonObject.id}</span>
         ${secondtype}
-        <p>${pokemonObject.weight} kg</p>
+        <span>${pokemonObject.weight} kg</span>
     `;
 
     listContainer.appendChild(pokemonContainer);
@@ -169,8 +168,19 @@ function setContainerBackgroundByType(container, pokemonType) {
         case 'flying':
             container.style.backgroundColor = 'rgb(154, 168, 255)';
             break;
-        default:
-            container.style.backgroundColor = 'white';
+        case 'fighting':
+            container.style.backgroundColor = 'rgb(197, 110, 96)';
+            break;
+        case 'ground':
+            container.style.backgroundColor = 'rgb(226, 197, 110)';
+        case 'rock':
+            container.style.backgroundColor = 'rgb(rgb(197, 183, 125)';
+        case 'dark':
+            container.style.backgroundColor = 'rgb(139, 110, 96)'
+        case 'steel':
+            container.style.backgroundColor = 'rgb(183, 183, 197)'
+        case 'fairy':
+            container.style.backgroundColor = 'rgb(241, 168, 241)';
             break;
 
     }
