@@ -28,7 +28,6 @@ let PokemonOffset = 1;
 let PokemonMax = 151;
 let PokemonObject = '';
 
-
 function init() {
     getPokemonList();
     const searchInput = document.querySelector('input[type="search"]');
@@ -72,66 +71,45 @@ async function getPokemonList() {
  * @param {Object} pokemonObject.sprites.other.showdown - The showdown sprites object.
  * @param {string} pokemonObject.sprites.other.showdown.front_default - The URL of the Pokémon's front image.
  */
+
 function renderPokemon(pokemonObject) {
     const listContainer = document.getElementById('pokemon-list');
+
+    // Create the container for the entire Pokémon card
     const pokemonContainer = document.createElement('div');
-    pokemonContainer.classList.add('pokemon-container');
+    pokemonContainer.classList.add('pokemon-card'); // Add a class for styling
 
     const pokemonType = pokemonObject.types[0].type.name;
     setContainerBackgroundByType(pokemonContainer, pokemonType);
-
     let secondtype = '';
     for (let i = 0; i < pokemonObject.types.length; i++) {
         secondtype += `<p>Type: ${pokemonObject.types[i].type.name}</p>`;
     }
-
     pokemonContainer.innerHTML = /*html*/`
-        
-    <div class = TopBarCard> 
-     <span>HP: ${pokemonObject.stats[0].base_stat}</span>
-     <span>ID NR: ${pokemonObject.id}</span>
-    </div> 
-    <div class = "displayNameCard"> 
-       <span>${pokemonObject.name.toUpperCase()}</span> 
-        <img src="${pokemonObject.sprites.other.showdown.front_default}" />
-    </div>
-    <div class = "showTypes">
-        ${secondtype} 
-    </div>
-    <div class = "bottomPartCard">
-        <span>Weight:${pokemonObject.weight} kg</span>
+    <div class="smallPokemonCard">   
+        <div class="topBarCard"> 
+            <span class="hp">HP: ${pokemonObject.stats[0].base_stat}</span>
+            <span class="id">ID NR: ${pokemonObject.id}</span>
+        </div> 
+        <div class="displayNameCard"> 
+           <span class="name">${pokemonObject.name.toUpperCase()}</span> 
+            <img src="${pokemonObject.sprites.other.showdown.front_default}" />
+        </div>
+        <div class="showTypes">
+            ${secondtype} 
+        </div>
+        <div class="bottomPartCard">
+            <span class="weight">Weight: ${pokemonObject.weight} kg</span>
+        </div>
     </div>`;
-
     listContainer.appendChild(pokemonContainer);
 }
 
-/**
- * Loads more Pokémon by calling the function to fetch the Pokémon list.
- */
-function loadMorePokemon() {
-    // Call the function to fetch the Pokémon list
-    getPokemonList();
-}
 
-async function searchPokemon(query) {
-    console.log('Suchbegriff:', query);
-    if (query.length >= 3) {
-        try {
-            const pokemon = await P.getPokemonByName(query.toLowerCase());
-            document.getElementById('pokemon-list').innerHTML = '';
-            renderPokemon(pokemon);
-        } catch (error) {
-            console.error('Fehler beim Laden des Pokémon:', error);
-            document.getElementById('pokemon-list').innerHTML = '<p>Pokémon nicht gefunden</p>';
-        }
-    } else {
-        document.getElementById('pokemon-list').innerHTML = '<p>Bitte mindestens 3 Buchstaben eingeben</p>';
-    }
-}
+
+
 
 function setContainerBackgroundByType(container, pokemonType) {
-    container.style.backgroundColor = 'white';
-
     switch (pokemonType.toLowerCase()) {
         case 'water':
             container.style.backgroundColor = 'rgb(81, 168, 255)';
@@ -176,14 +154,36 @@ function setContainerBackgroundByType(container, pokemonType) {
             break;
         case 'ground':
             container.style.backgroundColor = 'rgb(226, 197, 110)';
+            break
         case 'rock':
             container.style.backgroundColor = 'rgb(197, 183, 125)';
+            break
         case 'dark':
-            container.style.backgroundColor = 'rgb(139, 110, 96)'
+            container.style.backgroundColor = 'rgb(139, 110, 96)';
+            break
         case 'steel':
-            container.style.backgroundColor = 'rgb(183, 183, 197)'
+            container.style.backgroundColor = 'rgb(183, 183, 197)';
+            break
         case 'fairy':
             container.style.backgroundColor = 'rgb(241, 168, 241)';
             break;
+    }
+}
+
+
+
+async function searchPokemon(query) {
+    console.log('Suchbegriff:', query);
+    if (query.length >= 3) {
+        try {
+            const pokemon = await P.getPokemonByName(query.toLowerCase());
+            document.getElementById('pokemon-list').innerHTML = '';
+            renderPokemon(pokemon);
+        } catch (error) {
+            console.error('Fehler beim Laden des Pokémon:', error);
+            document.getElementById('pokemon-list').innerHTML = '<p>Pokémon nicht gefunden</p>';
+        }
+    } else {
+        document.getElementById('pokemon-list').innerHTML = '<p>Bitte mindestens 3 Buchstaben eingeben</p>';
     }
 }
