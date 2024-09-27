@@ -1,9 +1,3 @@
-
-
-
-
-
-
 /**
  * Fetches a list of Pokémon from the Pokedex API and renders them.
  * The function fetches Pokémon in batches defined by `PokemonLimit` and `PokemonOffset`.
@@ -21,16 +15,18 @@ async function getPokemonList() { }
  * @param {Object} pokemonObject.sprites.other.showdown - The showdown sprites object.
  * @param {string} pokemonObject.sprites.other.showdown.front_default - The URL of the Pokémon's front default sprite.
  */
-function renderPokemon(pokemonObject) { }
+function renderPokemon(pokemonObject) {
+
+}
 
 /**
  * Loads more Pokémon by fetching the next batch from the Pokedex API.
  */
-function loadMorePokemon() { }
 const P = new Pokedex.Pokedex()
-let PokemonLimit = 12;
+let PokemonLimit = 10;
 let PokemonOffset = 1;
 let PokemonMax = 151;
+let PokemonObject = '';
 
 
 function init() {
@@ -49,6 +45,8 @@ function init() {
  * @function getPokemonList
  * @returns {Promise<void>} A promise that resolves when the Pokémon list has been fetched and rendered.
  */
+
+
 async function getPokemonList() {
     for (let i = PokemonOffset; i <= PokemonLimit; i++) {
         if (i <= PokemonMax) {
@@ -61,7 +59,7 @@ async function getPokemonList() {
             return;
         }
     }
-    PokemonLimit += 12;
+    PokemonLimit += 10;
 }
 
 /**
@@ -87,19 +85,25 @@ function renderPokemon(pokemonObject) {
         secondtype += `<p>Type: ${pokemonObject.types[i].type.name}</p>`;
     }
 
-    pokemonContainer.innerHTML = `
-     <span>HP: ${pokemonObject.stats[0].base_stat}</span> 
+    pokemonContainer.innerHTML = /*html*/`
+        
+    <div class = TopBarCard> 
+     <span>HP: ${pokemonObject.stats[0].base_stat}</span>
+     <span>ID NR: ${pokemonObject.id}</span>
+    </div> 
+    <div class = "displayNameCard"> 
        <span>${pokemonObject.name.toUpperCase()}</span> 
         <img src="${pokemonObject.sprites.other.showdown.front_default}" />
-        <span>ID NR: ${pokemonObject.id}</span>
-        ${secondtype}
-        <span>${pokemonObject.weight} kg</span>
-    `;
+    </div>
+    <div class = "showTypes">
+        ${secondtype} 
+    </div>
+    <div class = "bottomPartCard">
+        <span>Weight:${pokemonObject.weight} kg</span>
+    </div>`;
 
     listContainer.appendChild(pokemonContainer);
 }
-
-
 
 /**
  * Loads more Pokémon by calling the function to fetch the Pokémon list.
@@ -124,7 +128,6 @@ async function searchPokemon(query) {
         document.getElementById('pokemon-list').innerHTML = '<p>Bitte mindestens 3 Buchstaben eingeben</p>';
     }
 }
-
 
 function setContainerBackgroundByType(container, pokemonType) {
     container.style.backgroundColor = 'white';
@@ -174,7 +177,7 @@ function setContainerBackgroundByType(container, pokemonType) {
         case 'ground':
             container.style.backgroundColor = 'rgb(226, 197, 110)';
         case 'rock':
-            container.style.backgroundColor = 'rgb(rgb(197, 183, 125)';
+            container.style.backgroundColor = 'rgb(197, 183, 125)';
         case 'dark':
             container.style.backgroundColor = 'rgb(139, 110, 96)'
         case 'steel':
@@ -182,6 +185,5 @@ function setContainerBackgroundByType(container, pokemonType) {
         case 'fairy':
             container.style.backgroundColor = 'rgb(241, 168, 241)';
             break;
-
     }
 }

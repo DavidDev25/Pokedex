@@ -14,14 +14,18 @@
 <body onload="init()">
     <div id="content">
         <header>
-            <img class="luxusball" src="assets/luxus-ball.svg" alt="Placeholder">
+            <div>
+                <img class="luxusball" src="assets/luxus-ball.svg" alt="Placeholder">
+            </div>
             <div>
                 <img class="PokedexHouse" src="assets/Pokedex Icon.png ">
             </div>
-            <input type="search" placeholder="Search Pokemon" oninput="searchPokemon(this.value)">
+            <div> <input type="search" placeholder="Search Pokemon" oninput="searchPokemon(this.value)">
+            </div>
+
         </header>
         <div id="pokemon-list"></div>
-        <button onclick="loadMorePokemon()">next Pokemon</button>
+        < <button onclick="loadMorePokemon()">next Pokemon</button>
     </div>
 </body>
 

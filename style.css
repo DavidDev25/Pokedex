@@ -11,8 +11,6 @@ body {
 
 #content {
     max-width: 1920px;
-    display: flex;
-    flex-direction: column;
 }
 
 header {
@@ -21,6 +19,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 25px;
 }
 
 .luxusball {
@@ -57,24 +56,71 @@ header input[type=search]::placeholder {
 }
 
 #pokemon-list {
-    max-width: 1200px;
+    display: grid;
+    grid-template-columns: auto auto auto;
     margin: 0 auto;
     display: grid;
-    flex-direction: row;
+    column-gap: 50px;
+    row-gap: 20px;
+    max-width: 1200px;
 }
 
 .pokemon-container {
 
     width: 350px;
-    height: 250px;
+    height: 350px;
     text-align: center;
-    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 .pokemon-container img {
     max-width: 100px;
     margin: 0 auto;
+}
+
+
+
+.TopBarCard {
+    display: flex;
+    justify-content: space-between;
+}
+
+.TopBarCard span {
+    margin-top: 4px;
+    font-size: 20px;
+    border: solid 1mm;
+    color: black;
+
+
+}
+
+
+.displayNameCard {
+    margin-top: 10px;
+
+}
+
+.displayNameCard span {
+    font-size: 30px;
+    color: black;
+    margin-bottom: 5 px;
+
+}
+
+.displayNameCard img {
+    display: flex;
+}
+
+.showTypes {
+    font-size: 24px;
+    border-top: solid 1mm;
+    border-bottom: solid 1mm;
+    color: black;
+}
+
+.bottomPartCard {
+    font-size: 20px;
+    color: black;
 }
