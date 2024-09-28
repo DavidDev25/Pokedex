@@ -9,6 +9,20 @@ body {
     min-height: 100vh;
 }
 
+@font-face {
+    font-family: "Aclonia-Regular";
+    src: url("./assets/Aclonica-Regular.ttf");
+}
+
+* {
+    font-family: "Aclonia-Regular";
+}
+
+body a {
+    width: 20px;
+    height: 20px;
+}
+
 #content {
     max-width: 1920px;
 }
@@ -56,11 +70,11 @@ header input[type=search]::placeholder {
 }
 
 .pokemon-card {
-    width: 100%;
+    width: 75%;
     margin: 10px;
     padding: 10px;
     border-radius: 10px;
-
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -82,17 +96,20 @@ header input[type=search]::placeholder {
 }
 
 .smallPokemonCard {
-    width: 300px;
+    width: 200px;
     padding: 20px;
-
     border-radius: 10px;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    min-height: 450px;
+    min-height: 300px;
 
+}
+
+.smallPokemonCard:hover {
+    transform: scale(1.1);
 }
 
 .topBarCard {
@@ -110,7 +127,8 @@ header input[type=search]::placeholder {
 
 .displayNameCard {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 20px;
+    margin-left: 35px;
 }
 
 .displayNameCard .name {
@@ -121,8 +139,11 @@ header input[type=search]::placeholder {
 }
 
 .displayNameCard img {
-    max-width: 100px;
+    max-width: 150px;
     margin-top: 10px;
+    border: solid 5px rgba(0, 0, 0, 0.5);
+    border-radius: 5%;
+    background-image: url(assets/type-icons/png/grass.png);
 }
 
 .showTypes {
@@ -130,7 +151,7 @@ header input[type=search]::placeholder {
     justify-content: center;
     gap: 10px;
     margin-top: 10px;
-    font-size: 24px;
+    font-size: 16px;
 }
 
 .bottomPartCard {
@@ -140,4 +161,10 @@ header input[type=search]::placeholder {
     font-style: italic;
     font-size: 18px;
     padding-bottom: 10px;
+}
+
+
+.loadMorePokemon {
+    text-transform: uppercase;
+    background-color: blue;
 }

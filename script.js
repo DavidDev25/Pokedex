@@ -22,6 +22,11 @@ function renderPokemon(pokemonObject) {
 /**
  * Loads more Pokémon by fetching the next batch from the Pokedex API.
  */
+function loadMorePokemon() {
+    getPokemonList();
+}
+
+
 const P = new Pokedex.Pokedex()
 let PokemonLimit = 10;
 let PokemonOffset = 1;
@@ -93,13 +98,13 @@ function renderPokemon(pokemonObject) {
         </div> 
         <div class="displayNameCard"> 
            <span class="name">${pokemonObject.name.toUpperCase()}</span> 
-            <img src="${pokemonObject.sprites.front_default}" />
+            <img src="${pokemonObject.sprites.other["official-artwork"].front_default}"# />
         </div>
         <div class="showTypes">
             ${secondtype} 
         </div>
         <div class="bottomPartCard">
-            <span class="weight">Weight: ${pokemonObject.weight} kg</span>
+            <span class="weight">Weight: ${pokemonObject.weight} hg</span>
         </div>
     </div>`;
     listContainer.appendChild(pokemonContainer);
@@ -112,60 +117,61 @@ function renderPokemon(pokemonObject) {
 function setContainerBackgroundByType(container, pokemonType) {
     switch (pokemonType.toLowerCase()) {
         case 'water':
-            container.style.backgroundColor = 'rgb(81, 168, 255)';
+            container.style.backgroundColor = 'rgba(81, 168, 255,0.7)';
             break;
         case 'fire':
-            container.style.backgroundColor = 'rgb(255, 96, 67)';
+            container.style.backgroundColor = 'rgba(255, 96, 67, 0.7)';
             break;
         case 'grass':
-            container.style.backgroundColor = 'rgb(139, 212, 110)';
+            container.style.backgroundColor = 'rgba(139, 212, 110, 0.8)';
             break;
         case 'electric':
-            container.style.backgroundColor = 'rgb(255, 212, 81)';
+            container.style.backgroundColor = 'rgba(255, 212, 81, 0.8)';
             break;
         case 'psychic':
-            container.style.backgroundColor = 'rgb(255, 110, 168)';
+            container.style.backgroundColor = 'rgba(255, 110, 168,0.7)';
             break;
         case 'rock':
-            container.style.backgroundColor = 'rgb(197, 183, 125)';
+            container.style.backgroundColor = 'rgba(197, 183, 125,0.7)';
             break;
         case 'ice':
-            container.style.backgroundColor = 'rgb(125, 212, 255)';
+            container.style.backgroundColor = 'rgba(125, 212, 255,0.7)';
             break;
         case 'dragon':
-            container.style.backgroundColor = 'rgb(139, 125, 241)';
+            container.style.backgroundColor = 'rgba(139, 125, 241,0.7)';
             break;
         case 'ghost':
-            container.style.backgroundColor = 'rgb(125, 125, 197)';
+            container.style.backgroundColor = 'rgba(125, 125, 197,0.7)';
             break;
         case 'bug':
-            container.style.backgroundColor = 'rgb(183, 197, 67)';
+            container.style.backgroundColor = 'rgba(183, 197, 67,0.7)';
             break;
         case 'poison':
-            container.style.backgroundColor = 'rgb(183, 110, 168)';
+            container.style.backgroundColor = 'rgba(183, 110, 168,0.7)';
             break;
         case 'normal':
-            container.style.backgroundColor = 'rgb(183, 183, 168)';
+            container.style.backgroundColor = 'rgba(187, 187, 170, 0.7)';
+            break;
         case 'flying':
-            container.style.backgroundColor = 'rgb(154, 168, 255)';
+            container.style.backgroundColor = 'rgba(154, 168, 255,0,7)';
             break;
         case 'fighting':
-            container.style.backgroundColor = 'rgb(197, 110, 96)';
+            container.style.backgroundColor = 'rgba(197, 110, 96, 0.7)';
             break;
         case 'ground':
-            container.style.backgroundColor = 'rgb(226, 197, 110)';
+            container.style.backgroundColor = 'rgba(226, 197, 110,0.7)';
             break
         case 'rock':
-            container.style.backgroundColor = 'rgb(197, 183, 125)';
+            container.style.backgroundColor = 'rgba(197, 183, 125,0.7)';
             break
         case 'dark':
-            container.style.backgroundColor = 'rgb(139, 110, 96)';
+            container.style.backgroundColor = 'rgba(139, 110, 96,0.7)';
             break
         case 'steel':
-            container.style.backgroundColor = 'rgb(183, 183, 197)';
+            container.style.backgroundColor = 'rgba(183, 183, 197,0.7)';
             break
         case 'fairy':
-            container.style.backgroundColor = 'rgb(241, 168, 241)';
+            container.style.backgroundColor = 'rgba(241, 168, 241,0.7)';
             break;
     }
 }
