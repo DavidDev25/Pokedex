@@ -71,6 +71,7 @@ header input[type=search]::placeholder {
 }
 
 .pokemon-card {
+
     width: 75%;
     margin: 10px;
     padding: 10px;
@@ -170,4 +171,12 @@ header input[type=search]::placeholder {
     text-transform: uppercase;
     background-color: rgb(255, 255, 255);
     border-radius: 30%;
+}
+
+.preloader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    background-color: black;
 }

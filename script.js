@@ -1,31 +1,9 @@
-/**
- * Fetches a list of Pokémon from the Pokedex API and renders them.
- * The function fetches Pokémon in batches defined by `PokemonLimit` and `PokemonOffset`.
- * It stops fetching when it reaches `PokemonMax`.
- * @returns {Promise<void>}
- */
 async function getPokemonList() { }
 
-/**
- * Renders a Pokémon object to the DOM.
- * @param {Object} pokemonObject - The Pokémon object to render.
- * @param {string} pokemonObject.name - The name of the Pokémon.
- * @param {Object} pokemonObject.sprites - The sprites object containing image URLs.
- * @param {Object} pokemonObject.sprites.other - The other sprites object.
- * @param {Object} pokemonObject.sprites.other.showdown - The showdown sprites object.
- * @param {string} pokemonObject.sprites.other.showdown.front_default - The URL of the Pokémon's front default sprite.
- */
-function renderPokemon(pokemonObject) {
 
-}
-
-/**
- * Loads more Pokémon by fetching the next batch from the Pokedex API.
- */
 function loadMorePokemon() {
     getPokemonList();
 }
-
 
 const P = new Pokedex.Pokedex()
 let PokemonLimit = 10;
@@ -35,20 +13,7 @@ let PokemonObject = '';
 
 function init() {
     getPokemonList();
-    const searchInput = document.querySelector('input[type="search"]');
 }
-
-/**
- * Fetches a list of Pokémon and renders them.
- * 
- * This function iterates from the current `PokemonOffset` to `PokemonLimit`, fetching each Pokémon by its name
- * and rendering it. If the current index exceeds `PokemonMax`, the function returns early. After processing,
- * `PokemonLimit` is incremented by 12.
- * 
- * @async
- * @function getPokemonList
- * @returns {Promise<void>} A promise that resolves when the Pokémon list has been fetched and rendered.
- */
 
 
 async function getPokemonList() {
@@ -66,52 +31,31 @@ async function getPokemonList() {
     PokemonLimit += 10;
 }
 
-/**
- * Renders a Pokémon object into the HTML list.
- * 
- * @param {Object} pokemonObject - The Pokémon object to render.
- * @param {string} pokemonObject.name - The name of the Pokémon.
- * @param {Object} pokemonObject.sprites - The sprites object containing image URLs.
- * @param {Object} pokemonObject.sprites.other - The other sprites object.
- * @param {Object} pokemonObject.sprites.other.showdown - The showdown sprites object.
- * @param {string} pokemonObject.sprites.other.showdown.front_default - The URL of the Pokémon's front image.
- */
-
 function renderPokemon(pokemonObject) {
     const listContainer = document.getElementById('pokemon-list');
 
-    // Create the container for the entire Pokémon card
     const pokemonContainer = document.createElement('div');
-    pokemonContainer.classList.add('pokemon-card'); // Add a class for styling
-
+    pokemonContainer.classList.add('pokemon-card');
     const pokemonType = pokemonObject.types[0].type.name;
     setContainerBackgroundByType(pokemonContainer, pokemonType);
     let secondtype = '';
     for (let i = 0; i < pokemonObject.types.length; i++) {
         secondtype += `<p>Type: ${pokemonObject.types[i].type.name}</p>`;
     }
-    pokemonContainer.innerHTML = /*html*/`
-    <div class="smallPokemonCard">   
-        <div class="topBarCard"> 
-            <span class="hp">HP: ${pokemonObject.stats[0].base_stat}</span>
-            <span class="id">ID NR: ${pokemonObject.id}</span>
-        </div> 
-        <div class="displayNameCard"> 
-           <span class="name">${pokemonObject.name.toUpperCase()}</span> 
-            <img src="${pokemonObject.sprites.other["official-artwork"].front_default}"# />
-        </div>
-        <div class="showTypes">
-            ${secondtype} 
-        </div>
-        <div class="bottomPartCard">
-            <span class="weight">Weight: ${pokemonObject.weight} hg</span>
-        </div>
-    </div>`;
+    pokemonContainer.innerHTML = renderPokemonTemplate(pokemonObject, secondtype);
     listContainer.appendChild(pokemonContainer);
 }
 
 
+function searchForPokemon(PokemonObject) {
+    return PokemonObject >= 10;
+}
 
+
+function closeModal() {
+    const modal = document.getElementById('modal')
+    modal.style.display = 'none';
+}
 
 
 function setContainerBackgroundByType(container, pokemonType) {
@@ -173,23 +117,5 @@ function setContainerBackgroundByType(container, pokemonType) {
         case 'fairy':
             container.style.backgroundColor = 'rgba(241, 168, 241,0.7)';
             break;
-    }
-}
-
-
-
-async function searchPokemon(query) {
-    console.log('Suchbegriff:', query);
-    if (query.length >= 3) {
-        try {
-            const pokemon = await P.getPokemonByName(query.toLowerCase());
-            document.getElementById('pokemon-list').innerHTML = '';
-            renderPokemon(pokemon);
-        } catch (error) {
-            console.error('Fehler beim Laden des Pokémon:', error);
-            document.getElementById('pokemon-list').innerHTML = '<p>Pokémon nicht gefunden</p>';
-        }
-    } else {
-        document.getElementById('pokemon-list').innerHTML = '<p>Bitte mindestens 3 Buchstaben eingeben</p>';
     }
 }
