@@ -12,28 +12,29 @@ let PokemonMax = 151;
 let PokemonObject = '';
 
 function init() {
+    showSpinner();
     getPokemonList();
 }
 
 
 async function getPokemonList() {
+    showSpinner();
     for (let i = PokemonOffset; i <= PokemonLimit; i++) {
         if (i <= PokemonMax) {
             const pokemon = await P.getPokemonByName(i);
             console.log(pokemon);
             renderPokemon(pokemon);
             PokemonOffset++;
-        }
-        else {
+        } else {
             return;
         }
     }
+    hideSpinner();
     PokemonLimit += 10;
 }
 
 function renderPokemon(pokemonObject) {
     const listContainer = document.getElementById('pokemon-list');
-
     const pokemonContainer = document.createElement('div');
     pokemonContainer.classList.add('pokemon-card');
     const pokemonType = pokemonObject.types[0].type.name;
@@ -118,4 +119,17 @@ function setContainerBackgroundByType(container, pokemonType) {
             container.style.backgroundColor = 'rgba(241, 168, 241,0.7)';
             break;
     }
+}
+
+
+function showSpinner() {
+    let preLoaderDiv = document.getElementById("preSpinner");
+    if (preLoaderDiv) {
+        preLoaderDiv.style.display = 'block';
+    }
+}
+
+function hideSpinner() {
+    let preLoaderDiv = document.getElementById("preSpinner");
+    preLoaderDiv.style.display = 'none';
 }

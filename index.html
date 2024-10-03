@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
     <script src="template.js"></script>
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -13,8 +14,7 @@
 </head>
 
 <body onload="init()">
-    <div class="preloader"></div>
-    </div>
+
     <div id="content">
         <header>
             <div>
@@ -27,7 +27,10 @@
     </div>
     </header>
     <div id="pokemon-list"></div>
-    <button class="loadMorePokemon" onclick="loadMorePokemon()">next Pokemon</button>
+    <div id="preSpinner">
+        <img src="assets/preloader-assets/simple_pokeball.gif" alt="prespinner Animation">
+    </div>
+    <button class="loadMorePokemon" onclick="loadMorePokemon()">Next Pokémon</button>
 </body>
 
 </html>

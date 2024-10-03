@@ -9,6 +9,7 @@ body {
     min-height: 100vh;
 }
 
+
 @font-face {
     font-family: "Aclonia-Regular";
     src: url("./assets/Aclonica-Regular.ttf");
@@ -173,10 +174,209 @@ header input[type=search]::placeholder {
     border-radius: 30%;
 }
 
-.preloader {
+
+#preSpinner {
+    display: none;
+    text-align: center;
+}
+
+#preSpinner img {
+    width: 100px;
+    height: 100px;
+}
+
+body {
+    background-image: url("./assets/background.png");
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+
+@font-face {
+    font-family: "Aclonia-Regular";
+    src: url("./assets/Aclonica-Regular.ttf");
+}
+
+* {
+    font-family: "Aclonia-Regular";
+}
+
+body a {
+    width: 20px;
+    height: 20px;
+}
+
+#content {
+    max-width: 1920px;
+}
+
+header {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.luxusball {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.PokedexHouse {
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 10px;
+    margin-top: 20px;
+    margin-left: 70px;
+}
+
+header input[type=search] {
+    margin-right: 20px;
+    border-radius: 100vw;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+header input[type=search]::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+    padding-left: 10px;
+}
+
+.pokemon-card {
+
+    width: 75%;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#pokemon-list {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin: 0 auto;
+    display: grid;
+    column-gap: 50px;
+    row-gap: 20px;
+    max-width: 1200px;
+}
+
+.pokemon-container img {
+    max-width: 100px;
+    margin: 0 auto;
+}
+
+.smallPokemonCard {
+    width: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 300px;
+
+}
+
+.smallPokemonCard:hover {
+    transform: scale(1.1);
+}
+
+.topBarCard {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.hp,
+.id {
+    font-weight: bold;
+}
+
+.displayNameCard {
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 35px;
+
+}
+
+.displayNameCard .name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.displayNameCard img {
+    max-width: 150px;
+    margin-top: 10px;
+    border: solid 5px rgba(0, 0, 0, 0.5);
+    border-radius: 5%;
+    background-image: url(assets/type-icons/png/grass.png);
+}
+
+.showTypes {
     display: flex;
     justify-content: center;
-    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.bottomPartCard {
+    text-align: center;
+    margin-top: auto;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 18px;
+    padding-bottom: 10px;
+}
+
+
+.loadMorePokemon {
+    text-transform: uppercase;
+    background-color: rgb(255, 255, 255);
+    border-radius: 30%;
+}
+
+#preSpinner {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
     z-index: 9999;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+#preSpinner img {
+    width: 100%;
+    height: 100%;
 }
