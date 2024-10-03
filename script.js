@@ -1,6 +1,5 @@
 async function getPokemonList() { }
 
-
 function loadMorePokemon() {
     getPokemonList();
 }
@@ -16,21 +15,20 @@ function init() {
     getPokemonList();
 }
 
-
 async function getPokemonList() {
     showSpinner();
     for (let i = PokemonOffset; i <= PokemonLimit; i++) {
         if (i <= PokemonMax) {
             const pokemon = await P.getPokemonByName(i);
-            console.log(pokemon);
             renderPokemon(pokemon);
             PokemonOffset++;
         } else {
             return;
         }
     }
+    if (PokemonLimit == 150) PokemonLimit += 1;
+    if (PokemonLimit < 150) PokemonLimit += 20;
     hideSpinner();
-    PokemonLimit += 10;
 }
 
 function renderPokemon(pokemonObject) {
@@ -44,20 +42,47 @@ function renderPokemon(pokemonObject) {
         secondtype += `<p>Type: ${pokemonObject.types[i].type.name}</p>`;
     }
     pokemonContainer.innerHTML = renderPokemonTemplate(pokemonObject, secondtype);
+    pokemonContainer.addEventListener('click', function () {
+        showPokemonModal(pokemonObject);
+    });
+
     listContainer.appendChild(pokemonContainer);
 }
 
+function showPokemonModal(pokemonObject) {
+    const modal = document.getElementById('pokemonModal');
+    const largePokemonCard = document.getElementById('largePokemonCard');
+
+    largePokemonCard.innerHTML = `
+        <div class="largePokemonCard">
+            <h2>${pokemonObject.name.toUpperCase()}</h2>
+            <img src="${pokemonObject.sprites.other['official-artwork'].front_default}" alt="${pokemonObject.name}">
+            <p>HP: ${pokemonObject.stats[0].base_stat}</p>
+            <p>ID: ${pokemonObject.id}</p>
+            <p>Weight: ${pokemonObject.weight} hg</p>
+            ${pokemonObject.types.map(type => `<p>Type: ${type.type.name}</p>`).join('')}
+        </div>
+    `;
+
+    modal.style.display = "block";
+    document.body.style.overflow = 'hidden';
+    modal.addEventListener('click', function (event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+
+}
+
+function closeModal() {
+    const modal = document.getElementById('pokemonModal');
+    modal.style.display = "none";
+    document.body.style.overflow = 'auto';
+}
 
 function searchForPokemon(PokemonObject) {
     return PokemonObject >= 10;
 }
-
-
-function closeModal() {
-    const modal = document.getElementById('modal')
-    modal.style.display = 'none';
-}
-
 
 function setContainerBackgroundByType(container, pokemonType) {
     switch (pokemonType.toLowerCase()) {
@@ -121,11 +146,10 @@ function setContainerBackgroundByType(container, pokemonType) {
     }
 }
 
-
 function showSpinner() {
     let preLoaderDiv = document.getElementById("preSpinner");
     if (preLoaderDiv) {
-        preLoaderDiv.style.display = 'block';
+        preLoaderDiv.style.display = 'flex';
     }
 }
 

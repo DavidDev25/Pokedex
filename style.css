@@ -361,22 +361,46 @@ header input[type=search]::placeholder {
     border-radius: 30%;
 }
 
+
 #preSpinner {
     display: none;
+    justify-content: center;
+    align-items: center;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    top: 0;
+    left: 0;
     z-index: 9999;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    border-radius: 10px;
+    background-color: rgb(24, 27, 29);
     width: 100%;
     height: 100%;
 }
 
 #preSpinner img {
+    width: 320px;
+    height: 320px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    border-radius: 10px;
+    position: relative;
+
 }
