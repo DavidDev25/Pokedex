@@ -53,7 +53,9 @@ function showPokemonModal(pokemonObject) {
     const modal = document.getElementById('pokemonModal');
     const largePokemonCard = document.getElementById('largePokemonCard');
 
-    largePokemonCard.innerHTML = `
+    largePokemonCard.innerHTML = /*html*/`
+        
+    
         <div class="largePokemonCard">
             <h2>${pokemonObject.name.toUpperCase()}</h2>
             <img src="${pokemonObject.sprites.other['official-artwork'].front_default}" alt="${pokemonObject.name}">
@@ -61,7 +63,10 @@ function showPokemonModal(pokemonObject) {
             <p>ID: ${pokemonObject.id}</p>
             <p>Weight: ${pokemonObject.weight} hg</p>
             ${pokemonObject.types.map(type => `<p>Type: ${type.type.name}</p>`).join('')}
+            <a class = "prev" onclick="changeImage(-1)">&#8656;</a>
+            <a class = "next" onclick="changeImage(+1)">&#8658;</a>   
         </div>
+         
     `;
 
     modal.style.display = "block";
