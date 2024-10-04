@@ -9,6 +9,7 @@ let PokemonLimit = 10;
 let PokemonOffset = 1;
 let PokemonMax = 151;
 let PokemonObject = '';
+let pokemonList = [];
 
 function init() {
     showSpinner();
@@ -20,6 +21,7 @@ async function getPokemonList() {
     for (let i = PokemonOffset; i <= PokemonLimit; i++) {
         if (i <= PokemonMax) {
             const pokemon = await P.getPokemonByName(i);
+            pokemonList.push(pokemon)
             renderPokemon(pokemon);
             PokemonOffset++;
         } else {
@@ -50,12 +52,11 @@ function renderPokemon(pokemonObject) {
 }
 
 function showPokemonModal(pokemonObject) {
+    currentPokemonIndex = pokemonList.findIndex(p => p.id === pokemonObject.id);
     const modal = document.getElementById('pokemonModal');
     const largePokemonCard = document.getElementById('largePokemonCard');
 
-    largePokemonCard.innerHTML = /*html*/`
-        
-    
+    largePokemonCard.innerHTML = `
         <div class="largePokemonCard">
             <h2>${pokemonObject.name.toUpperCase()}</h2>
             <img src="${pokemonObject.sprites.other['official-artwork'].front_default}" alt="${pokemonObject.name}">
@@ -63,21 +64,35 @@ function showPokemonModal(pokemonObject) {
             <p>ID: ${pokemonObject.id}</p>
             <p>Weight: ${pokemonObject.weight} hg</p>
             ${pokemonObject.types.map(type => `<p>Type: ${type.type.name}</p>`).join('')}
-            <a class = "prev" onclick="changeImage(-1)">&#8656;</a>
-            <a class = "next" onclick="changeImage(+1)">&#8658;</a>   
+            <a class="prev" onclick="changeImage(-1)">&#8656;</a>
+            <a class="next" onclick="changeImage(1)">&#8658;</a>
         </div>
-         
     `;
 
     modal.style.display = "block";
     document.body.style.overflow = 'hidden';
+
     modal.addEventListener('click', function (event) {
         if (event.target === modal) {
             closeModal();
         }
     });
+}
+
+
+function changeImage(direction) {
+    currentPokemonIndex += direction;
+    if (currentPokemonIndex < 0) {
+        currentPokemonIndex = pokemonList.length - 1;
+    }
+    else if (currentPokemonIndex >= pokemonList.length) {
+        currentPokemonIndex = 0;
+    }
+    const nextPokemon = pokemonList[currentPokemonIndex];
+    showPokemonModal(nextPokemon);
 
 }
+
 
 function closeModal() {
     const modal = document.getElementById('pokemonModal');
