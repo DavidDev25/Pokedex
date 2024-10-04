@@ -14,6 +14,9 @@ let pokemonList = [];
 function init() {
     showSpinner();
     getPokemonList();
+
+    const searchBar = document.getElementById('searchBar');
+    searchBar.addEventListener('input', searchForPokemon);
 }
 
 async function getPokemonList() {
@@ -80,6 +83,7 @@ function showPokemonModal(pokemonObject) {
 }
 
 
+
 function changeImage(direction) {
     currentPokemonIndex += direction;
     if (currentPokemonIndex < 0) {
@@ -93,6 +97,25 @@ function changeImage(direction) {
 
 }
 
+function searchForPokemon() {
+    const searchInput = document.getElementById('searchBar').value.toLowerCase();
+    const listContainer = document.getElementById('pokemon-list');
+
+    listContainer.innerHTML = '';
+
+    if (searchInput.length >= 3) {
+        const filteredPokemon = pokemonList.filter(pokemon => pokemon.name.toLowerCase().includes(searchInput));
+
+        filteredPokemon.forEach(pokemon => {
+            renderPokemon(pokemon);
+        });
+    } else {
+        pokemonList.forEach(pokemon => {
+            renderPokemon(pokemon);
+        });
+    }
+}
+
 
 function closeModal() {
     const modal = document.getElementById('pokemonModal');
@@ -100,9 +123,6 @@ function closeModal() {
     document.body.style.overflow = 'auto';
 }
 
-function searchForPokemon(PokemonObject) {
-    return PokemonObject >= 10;
-}
 
 function setContainerBackgroundByType(container, pokemonType) {
     switch (pokemonType.toLowerCase()) {
