@@ -105,7 +105,7 @@ function searchForPokemon() {
 
     if (searchInput.length >= 3) {
         const filteredPokemon = pokemonList.filter(pokemon => pokemon.name.toLowerCase().includes(searchInput));
-
+        https://www.allbytes.de/blog/javascript-foreach/#:~:text=Was%20ist%20forEach%3F,Aktion%20f%C3%BCr%20jedes%20Element%20auszuf%C3%BChren.
         filteredPokemon.forEach(pokemon => {
             renderPokemon(pokemon);
         });

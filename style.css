@@ -9,7 +9,6 @@ body {
     min-height: 100vh;
 }
 
-
 @font-face {
     font-family: "Aclonia-Regular";
     src: url("./assets/Aclonica-Regular.ttf");
@@ -19,15 +18,6 @@ body {
     font-family: "Aclonia-Regular";
 }
 
-body a {
-    width: 20px;
-    height: 20px;
-}
-
-#content {
-    max-width: 1920px;
-}
-
 header {
     height: fit-content;
     width: 100%;
@@ -35,17 +25,16 @@ header {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 25px;
+    padding: 0 10px;
 }
 
 .luxusball {
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-bottom: 20px;
     width: 50px;
     height: 50px;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
     padding: 10px;
+    margin: 20px;
 }
 
 .PokedexHouse {
@@ -54,43 +43,43 @@ header {
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
     padding: 10px;
-    margin-top: 20px;
-    margin-left: 70px;
+    margin: 20px;
 }
 
 header input[type=search] {
     margin-right: 20px;
     border-radius: 100vw;
-    margin-top: 15px;
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.5);
+    max-width: 250px;
 }
 
 header input[type=search]::placeholder {
     color: rgba(255, 255, 255, 0.8);
-    padding-left: 10px;
+}
+
+#content {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .pokemon-card {
-
-    width: 75%;
-    margin: 10px;
     padding: 10px;
     border-radius: 10px;
-    cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    cursor: pointer;
 }
 
 #pokemon-list {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1440px;
     margin: 0 auto;
-    display: grid;
-    column-gap: 50px;
-    row-gap: 20px;
-    max-width: 1200px;
+    padding: 10px;
 }
 
 .pokemon-container img {
@@ -99,16 +88,13 @@ header input[type=search]::placeholder {
 }
 
 .smallPokemonCard {
-    width: 200px;
     padding: 20px;
     border-radius: 10px;
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     min-height: 300px;
-
 }
 
 .smallPokemonCard:hover {
@@ -131,15 +117,14 @@ header input[type=search]::placeholder {
 .displayNameCard {
     text-align: center;
     margin-top: 20px;
-    margin-left: 35px;
-
 }
 
 .displayNameCard .name {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
-    display: block;
     margin-bottom: 10px;
+    width: 100%;
+    display: block;
 }
 
 .displayNameCard img {
@@ -147,220 +132,38 @@ header input[type=search]::placeholder {
     margin-top: 10px;
     border: solid 5px rgba(0, 0, 0, 0.5);
     border-radius: 5%;
-    background-image: url(assets/type-icons/png/grass.png);
 }
-
-.showTypes {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
-    font-size: 16px;
-}
-
-.bottomPartCard {
-    text-align: center;
-    margin-top: auto;
-    font-weight: bold;
-    font-style: italic;
-    font-size: 18px;
-    padding-bottom: 10px;
-}
-
 
 .loadMorePokemon {
+    display: block;
+    margin: 20px auto;
     text-transform: uppercase;
-    background-color: rgb(255, 255, 255);
+    background-color: #fff;
     border-radius: 30%;
+    padding: 10px;
+    font-size: 18px;
 }
 
-
-#preSpinner {
+.modal {
     display: none;
-    text-align: center;
-}
-
-#preSpinner img {
-    width: 100px;
-    height: 100px;
-}
-
-body {
-    background-image: url("./assets/background.png");
-    margin: 0;
-    padding: 0;
-    background-size: cover;
-    background-position: bottom;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    min-height: 100vh;
-}
-
-
-@font-face {
-    font-family: "Aclonia-Regular";
-    src: url("./assets/Aclonica-Regular.ttf");
-}
-
-* {
-    font-family: "Aclonia-Regular";
-}
-
-body a {
-    width: 20px;
-    height: 20px;
-}
-
-#content {
-    max-width: 1920px;
-}
-
-header {
-    height: fit-content;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
-.luxusball {
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    width: 50px;
-    height: 50px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    padding: 10px;
-}
-
-.PokedexHouse {
-    width: 100px;
-    height: 100px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    padding: 10px;
-    margin-top: 20px;
-    margin-left: 70px;
-}
-
-header input[type=search] {
-    margin-right: 20px;
-    border-radius: 100vw;
-    margin-top: 15px;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-header input[type=search]::placeholder {
-    color: rgba(255, 255, 255, 0.8);
-    padding-left: 10px;
-}
-
-.pokemon-card {
-
-    width: 75%;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-#pokemon-list {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    margin: 0 auto;
-    display: grid;
-    column-gap: 50px;
-    row-gap: 20px;
-    max-width: 1200px;
-}
-
-.pokemon-container img {
-    max-width: 100px;
-    margin: 0 auto;
-}
-
-.smallPokemonCard {
-    width: 200px;
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
     padding: 20px;
     border-radius: 10px;
+    max-width: 700px;
+    text-align: center;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 300px;
-
 }
-
-.smallPokemonCard:hover {
-    transform: scale(1.1);
-}
-
-.topBarCard {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    font-size: 18px;
-}
-
-.hp,
-.id {
-    font-weight: bold;
-}
-
-.displayNameCard {
-    text-align: center;
-    margin-top: 20px;
-    margin-left: 35px;
-
-}
-
-.displayNameCard .name {
-    font-size: 1.5rem;
-    font-weight: bold;
-    display: block;
-    margin-bottom: 10px;
-}
-
-.displayNameCard img {
-    max-width: 150px;
-    margin-top: 10px;
-    border: solid 5px rgba(0, 0, 0, 0.5);
-    border-radius: 5%;
-    background-image: url(assets/type-icons/png/grass.png);
-}
-
-.showTypes {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
-    font-size: 16px;
-}
-
-.bottomPartCard {
-    text-align: center;
-    margin-top: auto;
-    font-weight: bold;
-    font-style: italic;
-    font-size: 18px;
-    padding-bottom: 10px;
-}
-
-
-.loadMorePokemon {
-    text-transform: uppercase;
-    background-color: rgb(255, 255, 255);
-    border-radius: 30%;
-}
-
 
 #preSpinner {
     display: none;
@@ -380,60 +183,89 @@ header input[type=search]::placeholder {
     height: 320px;
 }
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+@media screen and (max-width: 1180px) {
+    #pokemon-list {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 225px));
+
+        gap: 15px;
+    }
 }
 
-.modal-content {
+@media screen and (max-width: 1180px) {
+    #preSpinner img {
+        width: 250px;
+        height: 250px;
+    }
 
-    background-color: #fefefe;
-    margin: 5% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 700px;
-    text-align: center;
-    border-radius: 10px;
-    position: relative;
+    #pokemon-list {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 225px));
+        gap: 15px;
+        margin-left: 75px;
+    }
 
+    .smallPokemonCard {
+        padding: 15;
+        min-height: 250px;
+    }
+
+    .topBarCard {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    .displayNameCard .name {
+        font-size: 10px;
+    }
+
+    .displayNameCard img {
+        max-width: 80px;
+    }
 }
 
-.prev,
-.next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 16px;
-    margin-top: -22px;
-    color: black;
-    font-weight: bold;
-    font-size: 30px;
-    transition: 0.3s ease;
-    border-radius: 0 3px 3px 0;
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .luxusball,
+    .PokedexHouse {
+        margin: 10px 0;
+    }
+
+    header input[type=search] {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    #pokemon-list {
+        #pokemon-list {
+            grid-template-columns: repeat(auto-fit, minmax(150px, 225px));
+        }
+    }
 }
 
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
+@media screen and (max-width: 480px) {
+    header input[type=search] {
+        width: 100%;
+        margin: 10px 0;
+        padding: 8px;
+    }
+
+    .loadMorePokemon {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    .smallPokemonCard {
+        min-height: 250px;
+    }
 }
 
-.prev {
-    left: 0;
-    border-radius: 3px 3px 0 0;
-}
+@media (max-width: 775px) {
 
-.prev:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    .PokedexHouse,
+    .luxusball {
+        display: none;
+    }
 }
